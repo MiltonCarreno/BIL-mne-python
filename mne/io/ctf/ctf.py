@@ -257,6 +257,8 @@ def _get_sample_info(fname, res4, system_clock):
                     % (n_trial, n_samp, n_samp, res4['nchan']))
     else:
         n_trial = n_samp // res4['nsamp']
+        if (n_samp % res4['nsamp']) != 0:   # Add extra 1 to trial num
+            n_trial += 1
         n_omit = n_samp_tot - n_samp
         logger.info('    %d x %d = %d samples from %d chs'
                     % (n_trial, res4['nsamp'], n_samp, res4['nchan']))
